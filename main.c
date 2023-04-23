@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include "main.h"
 
 int main(void)
 {
@@ -57,11 +54,7 @@ int main(void)
 		cmd_memory[i] = NULL;
 
 		i = 0;
-		for (i = 0; i < cmd_len - 1; i++)
-		{
-			printf("%s\n", cmd_memory[i]);
-		}
-		printf("Length of cmd: %d\n", cmd_len);
+		execmd(cmd_memory);
 		free(cmd_memory);
 		free(lineptr_copy);
 		free(lineptr);
