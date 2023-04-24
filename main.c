@@ -1,12 +1,13 @@
 #include "main.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
 	char *lineptr = NULL, *lineptr_copy, *token, **cmd_memory;
 	size_t n;
 	ssize_t nchar_read;
 	int cmd_len, i = 0;
 	const char *delim = " \n";
+	(void) argc;
 
 	while (1)
 	{
@@ -54,10 +55,10 @@ int main(void)
 		cmd_memory[i] = NULL;
 
 		i = 0;
-		execmd(cmd_memory);
-		free(cmd_memory);
-		free(lineptr_copy);
-		free(lineptr);
+		execmd(cmd_memory, argv);
 	}
+	free(cmd_memory);
+	free(lineptr_copy);
+	free(lineptr);
 	return (0);
 }
